@@ -1,0 +1,3 @@
+#!/bin/bash
+
+sendmail -f $SMTP_FROM -S $SMTP_HOST -v -t -i
