@@ -112,6 +112,5 @@ RUN apt-get update && apt-get install -y sendmail
 RUN rm -rf /var/lib/apt/lists/*
 
 COPY wascardev-php.ini /usr/local/etc/php/conf.d/
-COPY custom-sendmail /usr/local/bin/
 
 VOLUME /var/www/html
