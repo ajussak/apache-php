@@ -4,11 +4,6 @@ ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update
 RUN apt-get install -y locales locales-all
-ENV LC_ALL fr_FR.UTF-8
-ENV LANG fr_FR.UTF-8
-ENV LANGUAGE fr_FR.UTF-8
-
-ENV LC_ALL fr_FR.UTF-8
 
 # persistent dependencies
 RUN set -eux; \
@@ -107,11 +102,18 @@ RUN set -eux; \
 
 ENV SMTP_FROM ""
 ENV SMTP_HOST ""
+ENV SMTP_PORT 25
+ENV SMTP_AUTH "off"
+ENV SMTP_TLS "off"
+ENV SMTP_STARTTLS "off"
+ENV SMTP_USERNAME ""
+ENV SMTP_PASSWORD ""
 
-RUN apt-get update && apt-get install -y sendmail
-RUN rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -q -y msmtp msmtp-mta && rm -rf /var/lib/apt/lists/*
 
 COPY wascardev-php.ini /usr/local/etc/php/conf.d/
-COPY custom-sendmail /usr/local/bin/
 
 VOLUME /var/www/html
+
+COPY entrypoint.sh /
+ENTRYPOINT [ "/entrypoint.sh" ]
