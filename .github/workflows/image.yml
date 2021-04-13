@@ -40,3 +40,4 @@ jobs:
           push: true
           tags: |
             wascardev/apache-php:latest
+            wascardev/apache-php:7.4
