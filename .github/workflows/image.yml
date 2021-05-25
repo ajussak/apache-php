@@ -39,5 +39,5 @@ jobs:
           platforms: linux/amd64,linux/arm/v7,linux/arm64
           push: true
           tags: |
-            wascardev/apache-php:latest
-            wascardev/apache-php:7.4
+            tuxnvape/apache-php-redis:latest
+            tuxnvape/apache-php-redis:7.4
