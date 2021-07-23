@@ -41,3 +41,14 @@ jobs:
           tags: |
             tuxnvape/apache-php-redis:latest
             tuxnvape/apache-php-redis:7.4
+            
+      - name: Build and push php8
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile.php8
+          platforms: linux/amd64,linux/arm/v7,linux/arm64
+          push: true
+          tags: |
+            tuxnvape/apache-php-redis:8.0
+
